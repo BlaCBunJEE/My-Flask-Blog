@@ -11,14 +11,18 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from form import CreatePostForm, LoginForm, RegisterForm, CommentForm
 from functools import wraps
 from flask import abort, request, redirect, url_for
+import os
+
 
 # CONNECT TO FLASK
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+print(os.environ.get('SECRET_KEY'))
 app.config['CKEDITOR_PKG_TYPE'] = 'standard'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
+secretkey = '8BYkEfBA6O6donzWlSihBXox7C0sK'
 # LOAD GRAVATAR BY INITIALIZING
 gravatar = Gravatar(app, size=50, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False,
                     base_url=None)
