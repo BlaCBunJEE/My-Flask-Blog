@@ -35,7 +35,7 @@
             {% endif %}
             {% if not current_user.is_authenticated: %}
               <p class="subheading">
-<!--                Login or Register in order to make comments-->
+      <!--           Login or Register in order to make comments-->
                 <a class="btn btn-primary float-center" href="{{ url_for('login')}}"> Login </a>
                 or
                 <a class="btn btn-primary float-center" href="{{ url_for('register')}}"> Register </a>
