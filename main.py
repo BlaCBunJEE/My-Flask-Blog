@@ -18,6 +18,7 @@ import os
 # CONNECT TO FLASK
 app = Flask(__name__)
 csrf = CSRFProtect(app)
+app.config['WTF_CSRF_ENABLED'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['WTF_CSRF_SECRET_KEY'] = os.environ.get('WTF_CSRF_SECRET_KEY')
 csrf.init_app(app)
@@ -26,7 +27,8 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 # LOAD GRAVATAR BY INITIALIZING
-gravatar = Gravatar(app, size=50, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False,
+gravatar = Gravatar(app, size=50, rating='g', default='retro', force_default=False,
+                    force_lower=False, use_ssl=False,
                     base_url=None)
 
 # CONNECT TO DB
@@ -256,4 +258,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
