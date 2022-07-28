@@ -4,6 +4,7 @@ from flask_gravatar import Gravatar
 from flask_sqlalchemy import SQLAlchemy
 from flask_ckeditor import CKEditor
 from datetime import datetime
+from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import relationship
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
@@ -16,8 +17,10 @@ import os
 
 # CONNECT TO FLASK
 app = Flask(__name__)
+csrf = CSRFProtect(app)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['WTF_CSRF_SECRET_KEY'] = os.environ.get('WTF_CSRF_SECRET_KEY')
+csrf.init_app(app)
 app.config['CKEDITOR_PKG_TYPE'] = 'standard'
 ckeditor = CKEditor(app)
 Bootstrap(app)
