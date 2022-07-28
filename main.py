@@ -21,7 +21,6 @@ app.config['CKEDITOR_PKG_TYPE'] = 'standard'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
-secretkey = '8BYkEfBA6O6donzWlSihBXox7C0sK'
 # LOAD GRAVATAR BY INITIALIZING
 gravatar = Gravatar(app, size=50, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False,
                     base_url=None)
